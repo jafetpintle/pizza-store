@@ -20,4 +20,8 @@ public class PizzaService {
     public List<PizzaEntity> getAll(){
         return this.jdbcTemplate.query("SELECT * FROM PIZZA", new BeanPropertyRowMapper<>(PizzaEntity.class));
     }
+
+    public List<PizzaEntity> getNotAvailablePizzas(){
+        return this.jdbcTemplate.query("SELECT * FROM PIZZA WHERE available = 0", new BeanPropertyRowMapper<>(PizzaEntity.class));
+    }
 }

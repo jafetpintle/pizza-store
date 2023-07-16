@@ -24,4 +24,9 @@ public class PizzaController {
     public ResponseEntity<List<PizzaEntity>> getAll(){
         return ResponseEntity.ok(this.pizzaService.getAll());
     }
+
+    @GetMapping("/not_available")
+    public ResponseEntity<List<PizzaEntity>> getNotAvailablePizzas(){
+        return ResponseEntity.ok(this.pizzaService.getNotAvailablePizzas());
+    }
 }
