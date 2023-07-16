@@ -25,9 +25,9 @@ public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_order", nullable = false)
-    private Integer id;
-    @Column(name = "id_costumer", nullable = false, length = 15)
-    private String idCostumer;
+    private Integer idOrder;
+    @Column(name = "id_customer", nullable = false, length = 15)
+    private String idCustomer;
     @Column(nullable = false, columnDefinition = "DATETIME")
     private LocalDateTime date;
     @Column(nullable = false, columnDefinition = "DECIMAL(6,2)")
@@ -35,7 +35,7 @@ public class OrderEntity {
     @Column(nullable = false, columnDefinition = "CHAR(1)")
     private String method;
     @Column(name = "additional_notes", length = 200)
-    private String aditionalNotes;
+    private String additionalNotes;
 
     @OneToOne
     @JoinColumn(name = "id_customer", referencedColumnName = "id_customer", insertable = false, updatable = false)
