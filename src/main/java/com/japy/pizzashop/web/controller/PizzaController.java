@@ -5,6 +5,7 @@ import com.japy.pizzashop.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,8 +26,11 @@ public class PizzaController {
         return ResponseEntity.ok(this.pizzaService.getAll());
     }
 
-    @GetMapping("/not_available")
+    @GetMapping("/{id_pizza}")
+    public ResponseEntity<PizzaEntity> get(@PathVariable int id_pizza){return ResponseEntity.ok(this.pizzaService.get(id_pizza));}
+
+    /*@GetMapping("/not_available")
     public ResponseEntity<List<PizzaEntity>> getNotAvailablePizzas(){
         return ResponseEntity.ok(this.pizzaService.getNotAvailablePizzas());
-    }
+    }*/
 }
