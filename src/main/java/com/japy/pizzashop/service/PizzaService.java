@@ -22,10 +22,17 @@ public class PizzaService {
         return this.pizzaRepository.findAll();
     }
 
-    public PizzaEntity get(int id_pizza){
-        return this.pizzaRepository.findById(id_pizza).orElse(null);
+    public PizzaEntity get(int idPizza){
+        return this.pizzaRepository.findById(idPizza).orElse(null);
     }
 
+    public PizzaEntity save(PizzaEntity pizza){
+        return this.pizzaRepository.save(pizza);
+    }
+
+    public boolean exist(int idPizza){
+        return this.pizzaRepository.existsById(idPizza);
+    }
     /*public List<PizzaEntity> getNotAvailablePizzas(){
         return this.jdbcTemplate.query("SELECT * FROM PIZZA WHERE available = 0", new BeanPropertyRowMapper<>(PizzaEntity.class));
     }*/
