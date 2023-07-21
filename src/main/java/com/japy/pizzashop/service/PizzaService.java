@@ -33,6 +33,10 @@ public class PizzaService {
     public boolean exist(int idPizza){
         return this.pizzaRepository.existsById(idPizza);
     }
+
+    public void delete(int idPizza){
+        this.pizzaRepository.deleteById(idPizza);
+    }
     /*public List<PizzaEntity> getNotAvailablePizzas(){
         return this.jdbcTemplate.query("SELECT * FROM PIZZA WHERE available = 0", new BeanPropertyRowMapper<>(PizzaEntity.class));
     }*/
