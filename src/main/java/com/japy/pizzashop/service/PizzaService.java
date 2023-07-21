@@ -22,6 +22,10 @@ public class PizzaService {
         return this.pizzaRepository.findAll();
     }
 
+    public List<PizzaEntity> getAvailable(){
+        return this.pizzaRepository.findAllByAvailableTrueOrderByPrice();
+    }
+
     public PizzaEntity get(int idPizza){
         return this.pizzaRepository.findById(idPizza).orElse(null);
     }
@@ -37,6 +41,7 @@ public class PizzaService {
     public void delete(int idPizza){
         this.pizzaRepository.deleteById(idPizza);
     }
+
     /*public List<PizzaEntity> getNotAvailablePizzas(){
         return this.jdbcTemplate.query("SELECT * FROM PIZZA WHERE available = 0", new BeanPropertyRowMapper<>(PizzaEntity.class));
     }*/
