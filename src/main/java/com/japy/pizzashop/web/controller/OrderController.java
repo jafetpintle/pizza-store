@@ -1,2 +1,27 @@
-package com.japy.pizzashop.web.controller;public class OrderController {
+package com.japy.pizzashop.web.controller;
+
+import com.japy.pizzashop.persitence.entity.OrderEntity;
+import com.japy.pizzashop.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/orders")
+public class OrderController {
+    private final OrderService orderService;
+
+    @Autowired
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<OrderEntity>> getdAll(){
+        return ResponseEntity.ok(this.orderService.getAll());
+    }
 }
