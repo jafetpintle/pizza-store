@@ -30,6 +30,10 @@ public class PizzaService {
         return this.pizzaRepository.findById(idPizza).orElse(null);
     }
 
+    public PizzaEntity getByName(String name){
+        return this.pizzaRepository.findByAvailableTrueAndNameIgnoreCase(name);
+    }
+
     public PizzaEntity save(PizzaEntity pizza){
         return this.pizzaRepository.save(pizza);
     }
