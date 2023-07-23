@@ -32,7 +32,7 @@ public class PizzaService {
     }
 
     public PizzaEntity getByName(String name){
-        return this.pizzaRepository.findByAvailableTrueAndNameIgnoreCase(name);
+        return this.pizzaRepository.findFirstByAvailableTrueAndNameIgnoreCase(name).orElseThrow(() -> new RuntimeException("La pizza no existe"));
     }
 
     public List<PizzaEntity> getWith(String ingredient){
@@ -40,6 +40,10 @@ public class PizzaService {
     }
     public List<PizzaEntity> getWithout(String ingredient){
         return this.pizzaRepository.findAllByAvailableTrueAndDescriptionNotContainsIgnoreCase(ingredient);
+    }
+
+    public List<PizzaEntity> getCheapest(double price){
+        return this.pizzaRepository.findTop3ByAvailableTrueAndPriceLessThanEqualOrderByPriceAsc(price);
     }
 
     public PizzaEntity save(PizzaEntity pizza){
