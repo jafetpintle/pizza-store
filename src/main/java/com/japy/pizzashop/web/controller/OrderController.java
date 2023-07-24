@@ -34,4 +34,9 @@ public class OrderController {
     public ResponseEntity<List<OrderEntity>> getOutsideOrders(){
         return ResponseEntity.ok(this.orderService.getOutsideOrders());
     }
+
+    @GetMapping("/customer/{idCustomer}")
+    public ResponseEntity<List<OrderEntity>> getCustomerOrders(@PathVariable String idCustomer){
+        return ResponseEntity.ok(orderService.getCustomerOrders(idCustomer));
+    }
 }
