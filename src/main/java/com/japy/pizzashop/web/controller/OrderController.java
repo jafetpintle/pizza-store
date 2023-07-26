@@ -1,12 +1,14 @@
 package com.japy.pizzashop.web.controller;
 
 import com.japy.pizzashop.persitence.entity.OrderEntity;
+import com.japy.pizzashop.persitence.projection.OrderSummary;
 import com.japy.pizzashop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -38,5 +40,10 @@ public class OrderController {
     @GetMapping("/customer/{idCustomer}")
     public ResponseEntity<List<OrderEntity>> getCustomerOrders(@PathVariable String idCustomer){
         return ResponseEntity.ok(orderService.getCustomerOrders(idCustomer));
+    }
+
+    @GetMapping("/summary/{idOrder}")
+    public ResponseEntity<OrderSummary> getSummary(@PathVariable int idOrder){
+        return ResponseEntity.ok(this.orderService.getSummary(idOrder));
     }
 }

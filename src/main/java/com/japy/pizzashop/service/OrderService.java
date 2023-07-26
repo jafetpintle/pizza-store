@@ -2,6 +2,7 @@ package com.japy.pizzashop.service;
 
 import com.japy.pizzashop.persitence.entity.OrderEntity;
 import com.japy.pizzashop.persitence.entity.OrderItemEntity;
+import com.japy.pizzashop.persitence.projection.OrderSummary;
 import com.japy.pizzashop.persitence.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,9 @@ public class OrderService {
 
     public List<OrderEntity> getCustomerOrders(String idCustomer){
         return orderRepository.findCustomerOrders(idCustomer);
+    }
+
+    public OrderSummary getSummary(int orderId){
+        return this.orderRepository.findSummary(orderId);
     }
 }
